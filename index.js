@@ -1,11 +1,14 @@
 import app from './src/app.js';
 import dotenv from 'dotenv';
-import { connectDB } from './src/config/db.js';
 import authRoute from './src/routes/authRoute.js';
+import connectDB from './src/configs/dbConfig.js';
+import productRouter from './src/routes/productRoute.js';
 dotenv.config();
 await connectDB();
 
 app.use('/api',authRoute);
+app.use('/api/product', productRouter);
+
 
 
 const PORT=3000;
